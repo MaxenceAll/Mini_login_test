@@ -12,7 +12,6 @@ const axiosInstance = axios.create({
 const fetcher = {};
 
 fetcher.get = async (endpoint, params = {}, headers = {}) => {
-  console.log("les params sont:", params);
   try {
     const response = await axiosInstance.get(endpoint, {
       params,
@@ -31,7 +30,6 @@ fetcher.get = async (endpoint, params = {}, headers = {}) => {
 };
 
 fetcher.post = async (endpoint, data = {}, headers = {}) => {
-  console.log("les params sont:", data);
   try {
     const response = await axiosInstance.post(endpoint, data, {
       headers: { ...axiosInstance.defaults.headers, ...headers },
@@ -49,7 +47,6 @@ fetcher.post = async (endpoint, data = {}, headers = {}) => {
 };
 
 fetcher.put = async (endpoint, data = {}, headers = {}) => {
-  console.log("les params sont:", data);
   try {
     const response = await axiosInstance.put(endpoint, data, {
       headers: { ...axiosInstance.defaults.headers, ...headers },
@@ -67,7 +64,6 @@ fetcher.put = async (endpoint, data = {}, headers = {}) => {
 };
 
 fetcher.patch = async (endpoint, data = {}, headers = {}) => {
-  console.log("les params sont:", data);
   try {
     const response = await axiosInstance.patch(endpoint, data, {
       headers: { ...axiosInstance.defaults.headers, ...headers },
@@ -85,7 +81,6 @@ fetcher.patch = async (endpoint, data = {}, headers = {}) => {
 };
 
 fetcher.delete = async (endpoint, params = {}, headers = {}) => {
-  console.log("les params sont:", params);
   try {
     const response = await axiosInstance.delete(endpoint, {
       params,

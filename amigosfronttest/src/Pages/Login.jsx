@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import styled from 'styled-components';
 import fetcher from '../Helpers/fetcher';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthContext';
 
 
 const Login = () => {
 
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
     const formik = useFormik({
@@ -19,8 +21,9 @@ const Login = () => {
                 const resp = await fetcher.post('/api/v1/auth/login', values); // Replace with your login API endpoint
                 console.log(resp)
                 if (resp.token){
+                  login(resp.token, resp.role, resp.email);
                   localStorage.setItem('token', resp.token);                
-                  navigate('/dashboard');
+                  navigate('/');
                 } else {                
                   setErrors({ register: 'Registration failed' });
                 }

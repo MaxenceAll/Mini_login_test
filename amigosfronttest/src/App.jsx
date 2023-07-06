@@ -7,9 +7,14 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 import ProductDetails from './components/Home/ProductDetails';
-import PrivateRoutes from './Layouts/PrivateRoutes';
-import Dashboard from './Pages/Dashboard';
-import AdminOnly from './Pages/AdminOnly';
+
+
+import UserDashboard from './Pages/UserDashboard';
+import AdminDashboard from './Pages/AdminDashboard';
+import ManagerDashboard from './Pages/ManagerDashboard';
+import LoggedRoutes from './Layouts/LoggedRoutes';
+import AdminRoutes from './Layouts/AdminRoutes';
+import ManagerRoutes from './Layouts/ManagerRoutes';
 
 
 
@@ -19,12 +24,20 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="produit/:id" element={<ProductDetails />}/>
+      <Route path="produit/:id" element={<ProductDetails />} />
 
-      <Route element={<PrivateRoutes />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/protected" element={<AdminOnly />} />
+      <Route element={<LoggedRoutes />}>
+        <Route path="/user" element={<UserDashboard />} />
       </Route>
+
+      <Route element={<AdminRoutes />}>
+        <Route path="/admin" element={<AdminDashboard />} />
+      </Route>
+
+      <Route element={<ManagerRoutes />}>
+        <Route path="/manager" element={<ManagerDashboard />} />
+      </Route>
+
 
       <Route path="*" element={<NotFound />} />
     </Route>

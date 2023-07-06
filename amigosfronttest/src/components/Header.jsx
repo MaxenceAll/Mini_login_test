@@ -16,10 +16,13 @@ function Header() {
             <NavLink to="/register">
                 Register
             </NavLink>
-            <NavLink to="/dashboard">
+            <NavLink to="/user">
                 Logged Only
             </NavLink>
-            <NavLink to="/protected">
+            <NavLink to="/manager">
+                Logged & Manager Only
+            </NavLink>
+            <NavLink to="/admin">
                 Logged & Admin Only
             </NavLink>
         </DIV_Header_Container>
