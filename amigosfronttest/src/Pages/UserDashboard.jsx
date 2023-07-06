@@ -9,9 +9,19 @@ function UserDashboard() {
   const { isLoggedIn, userEmail, token, userRole, isLoading } = useContext(AuthContext);
   const [response, setResponse] = useState("");
 
-  const handleButtonClick = async (method) => {
+  const handleButtonClick = async (method, route) => {
     try {
-      const apiResponse = await fetcher[method]("/api/v1/user", {}, { Authorization: `Bearer ${token}` });
+      const apiResponse = await fetcher[method](`/api/v1/${route}`, {}, { Authorization: `Bearer ${token}` });
+      setResponse(JSON.stringify(apiResponse, null, 2));
+    } catch (error) {
+      console.error("Error while sending API request:", error);
+      setResponse("Error occurred during API request.");
+    }
+  };
+
+  const handleTestButtonClick = async () => {
+    try {
+      const apiResponse = await fetcher.get(`/api/v1/demo-controller`, {}, { Authorization: `Bearer ${token}` });
       setResponse(JSON.stringify(apiResponse, null, 2));
     } catch (error) {
       console.error("Error while sending API request:", error);
@@ -44,11 +54,25 @@ function UserDashboard() {
       </InfoContainer>
 
       <ButtonContainer>
-        <button onClick={() => handleButtonClick("get")}>GET Request</button>
-        <button onClick={() => handleButtonClick("post")}>POST Request</button>
-        <button onClick={() => handleButtonClick("put")}>PUT Request</button>
-        <button onClick={() => handleButtonClick("delete")}>DELETE Request</button>
+        <button onClick={() => handleButtonClick("get", "manager")}>GET Request to a manager route</button>
+        <button onClick={() => handleButtonClick("post", "manager")}>POST Request to a manager route</button>
+        <button onClick={() => handleButtonClick("put", "manager")}>PUT Request to a manager route</button>
+        <button onClick={() => handleButtonClick("delete", "manager")}>DELETE Request to a manager route</button>
       </ButtonContainer>
+      <ButtonContainer>
+        <button onClick={() => handleButtonClick("get", "user")}>GET Request to an user route</button>
+        <button onClick={() => handleButtonClick("post", "user")}>POST Request to an user route</button>
+        <button onClick={() => handleButtonClick("put", "user")}>PUT Request to an user route</button>
+        <button onClick={() => handleButtonClick("delete", "user")}>DELETE Request to an user route</button>
+      </ButtonContainer>
+      <ButtonContainer>
+        <button onClick={() => handleButtonClick("get", "admin")}>GET Request to an admin route</button>
+        <button onClick={() => handleButtonClick("post", "admin")}>POST Request to an admin route</button>
+        <button onClick={() => handleButtonClick("put", "admin")}>PUT Request to an admin route</button>
+        <button onClick={() => handleButtonClick("delete", "admin")}>DELETE Request to an admin route</button>
+      </ButtonContainer>
+
+      <button onClick={() => handleTestButtonClick()}>Test btn</button>
 
       <ResponseContainer>
         <ResponseTitle>API Response:</ResponseTitle>
