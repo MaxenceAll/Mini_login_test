@@ -20,7 +20,7 @@ function ManagerDashboard() {
   };
 
   if (isLoading) {  
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
 
   return (

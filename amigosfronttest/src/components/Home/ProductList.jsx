@@ -6,7 +6,7 @@ import { currencyFormat } from '../../Tools/currencyFormat';
 function ProductList( {products}) {
 
   if (products.length === 0) {
-    return <p>Loading products...</p>;
+    return <p>Chargement de la liste des produits...</p>;
   }
 
     const [selectedType, setSelectedType] = useState(null);

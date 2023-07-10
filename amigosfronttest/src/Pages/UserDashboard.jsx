@@ -30,7 +30,7 @@ function UserDashboard() {
   };
 
   if (isLoading) {  
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
 
   return (

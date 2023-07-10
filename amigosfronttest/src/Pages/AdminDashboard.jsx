@@ -20,7 +20,7 @@ function AdminDashboard() {
   };
 
   if (isLoading) {  
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
 
   return (
