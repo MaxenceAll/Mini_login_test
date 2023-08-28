@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
             }
         };
 
-        fetchAuth();
+        fetchAuth(); 
     }, []);
 
     const login = (token, email, role) => {
